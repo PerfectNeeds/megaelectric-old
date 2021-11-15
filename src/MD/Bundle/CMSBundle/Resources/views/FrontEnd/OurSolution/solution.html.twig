@@ -1,0 +1,74 @@
+{% extends 'FEBundle::base.html.twig' %}
+{% block title %}Our Partners{% endblock %}
+
+{% block stylesheet %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/fe/css/jquery.lightbox.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+
+{% block banner %}
+    {% if entity.mainImage %}
+        <li>
+            <img src="{{ asset('uploads/our-solution/' ~ entity.id ~ "/" ~ entity.mainImage.id) }}" style="height: 100%;object-fit: cover;">
+        </li>
+    {% else %}
+        {{ render(controller('CMSBundle:FrontEnd/Banner:Banner' , {'placment' : 4 })) }}
+    {% endif %}
+{%endblock %}
+
+{% block content %}
+    <div class="solutions container"> <!-- Start of Solutions -->
+        <h3> {{ entity.title }} </h3>
+        <div class="col-md-12">
+            <div class="solution_data col-md-9 col-sm-8"> <!-- Start Of Solution_data -->
+
+                {{ entity.content|raw }}
+            </div> <!-- End Of Solution_data -->
+            {#<div class="residential col-md-3 col-sm-4"> <!-- Start Of Residential -->
+                <h3> REFRRENCES </h3>
+                {% if entity.projects %}
+                    <ul>
+                        {% for project in entity.projects %}
+                            <li> {{ project.title }} </li>
+                            {% endfor %}
+                    </ul>
+                {% endif %}
+                 {% if entity.youtubeUrl !='' and entity.youtubeUrl !='#' %}
+                    <div class="refr_thumbs">
+                        <a href="{{entity.youtubeUrl}}" class="youtubeLightbox">
+                            <div class="play_btn"></div>
+                            <img src="{{ entity.youtuebThumbnail }}" class="refr_thumb"/></a>
+                    </div>
+                {% endif %}
+               {% for document in entity.documents %}
+                    <div class="solu_pdf">
+                        <a target="_blank" href="{{ path('download', {'d': '{"document":'~document.id~',"element":'~entity.id~',"type":11}'}) }}">
+                            <img src="{{ asset('bundles/fe/images/pdf.png') }}">
+                            <h5> {{ document.name }} </h5>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div> <!-- End Of Residential -->#}
+        </div>
+        {#<div class="gallery col-md-12 col-sm-12 col-xs-12">
+            <p> Gallery </p>
+            <div class="thumbs">
+                {% for image in entity.images %}
+                    <a href="{{ asset('uploads/our-solution/' ~ entity.id ~ "/" ~ image.id) }}" class="lightbox"><img src="{{ asset('uploads/our-solution/' ~ entity.id ~ "/" ~ image.id) }}" class="thumb"></a>
+                    {% endfor %}
+            </div>
+        </div> #}
+    </div> <!-- End Of Solutions -->
+{% endblock %}
+
+{% block javascript %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/fe/js/jquery.lightbox.js') }}" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.lightbox').lightbox({'type': 'image'});
+            $('.youtubeLightbox').lightbox();
+        });
+    </script>
+{% endblock %}

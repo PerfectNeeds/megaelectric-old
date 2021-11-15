@@ -1,0 +1,56 @@
+{% extends 'AdminTemplateBundle::base.html.twig' %}
+{% block title %}Users{% endblock %}
+{% block body -%}
+{{ parent() }}
+<div class="row">
+    <div class="col-lg-12">
+        <section class="panel">
+            <div class="panel-body progress-panel">
+                <div class="task-progress">
+                    <h1>User list</h1>
+                </div>
+                <div class="task-option">
+                    <a class="btn btn-success" href="{{ path('user_new') }}">Create a new entry</a>
+                </div>
+            </div>
+            <table class="table table-striped border-top" id="sample_1">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Isactive</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+        {% for entity in entities %}
+                    <tr>
+                        <td><a href="{{ path('user_edit', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                        <td>{{ entity.username }}</td>
+                        <td>{{ entity.email }}</td>
+                        <td>{{ entity.isActive }}</td>
+                        <td>
+                            <a title="" data-placement="top" data-toggle="tooltip" href="{{ path('user_edit', { 'id': entity.id }) }}" class="btn btn-primary btn-xs tooltips" data-original-title="Edit"><i class="icon-pencil"></i></a>
+                        </td>
+                    </tr>
+        {% endfor %}
+                </tbody>
+            </table>
+            <div class="panel-body progress-panel">
+                <div class="task-option">
+                    <a class="btn btn-success" href="{{ path('user_new') }}">Create a new entry</a>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+<!--script for this page only-->
+<script type="text/javascript" src="{{ asset('bundles/admintemplate/assets/data-tables/jquery.dataTables.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/admintemplate/assets/data-tables/DT_bootstrap.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/admintemplate/js/dynamic-table.js') }}"></script>
+    {% endblock %}

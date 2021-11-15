@@ -1,0 +1,44 @@
+{% extends 'AdminTemplateBundle::base.html.twig' %}
+{% block title %}Add New Page{% endblock %}
+{% block page_title %}Page creation{% endblock %}
+
+{% block body -%}
+{{ parent() }}
+{# tinymce_init() #}
+
+<div class="row">
+    <div class="col-lg-12">
+        <section class="panel">
+            <header class="panel-heading">
+                Page Creation
+            </header>
+            {{ tinymce_init({theme: "simple"}) }}
+
+            <div class="panel-body">
+                <form class="form-horizontal tasi-form" action="{{ path('dynamicpage_create') }}" method="post" {{ form_enctype(form) }}>
+        {{ form_widget(form) }}
+                    <div class="form-group">
+                        <div class="col-lg-offset-2 col-lg-10">
+                            <button class="btn btn-primary" type="submit">Create</button>
+                            <button type="reset" class="btn btn-default">Cancel</button>
+                        </div>
+                    </div>
+                </form>
+                <a class="btn btn-round btn-info" href="{{ path('dynamicpage') }}"><i class="icon-undo"></i> Back to the list</a>
+            </div>
+        </section>
+    </div>
+</div>
+{% endblock %}
+{% block javascripts  %}
+{{ parent() }}
+<script type="text/javascript" src="{{ asset('bundles/admintemplate/js/jquery.slug.js') }}"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#dynamicpagetype_title").slug({
+            slug: 'slug', // class of input / span that contains the generated slug 
+            hide: false        // hide the text input, true by default 
+        });
+    });
+</script>
+{% endblock %}

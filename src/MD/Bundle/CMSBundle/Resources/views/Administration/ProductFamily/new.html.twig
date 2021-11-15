@@ -1,0 +1,69 @@
+{% extends 'AdminTemplateBundle::base.html.twig' %}
+{% block title %}Add Product Family{% endblock %}
+{% set page_title %}Product Family Creation{% endset %}
+{% block body -%}
+{{ tinymce_init() }}
+<div class="row">
+    <div class="col-lg-12">
+        <section class="panel">
+            <header class="panel-heading">
+                {{ page_title }}
+            </header>
+            <div class="panel-body">
+
+                <form class="form-horizontal tasi-form" action="{{ path('product-family_create') }}" method="post" {{ form_enctype(form) }}>
+                    <div class="form-group ">
+                        <label class="col-sm-2 control-label" for="category">Category</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" name="category" required="required">
+                                {% for barnd in barnds %}
+                                <optgroup label="{{ barnd.name }}">
+                                {% for category in barnd.categories %}
+                                    <option value="{{ category.id }}">{{ category.name }}</option>
+                                {% endfor %}
+                                </optgroup>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+        {{ form_widget(form) }}
+                    <div class="form-group ">
+                        <label class="col-sm-2 control-label" for="brief">Brief</label>
+                        <div class="col-sm-10">
+                            <textarea name="brief" id="brief" class="form-control"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <label class="col-sm-2 control-label" for="description">Description</label>
+                        <div class="col-sm-10">
+                            <textarea name="description" id="description" class="form-control tinymce"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-offset-2 col-lg-10">
+                            <button type="submit" class="btn btn-primary">Save</button>
+                            <button type="button" class="btn btn-default">Cancel</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="panel-body">
+                <a class="btn btn-round btn-info" href="{{ path('product-family') }}"><i class="icon-undo"></i> Back to the list</a>
+            </div>
+        </section>
+    </div>
+</div>
+
+{% endblock %}
+{% block javascripts  %}
+{{ parent() }}
+<script type="text/javascript" src="{{ asset('bundles/admintemplate/js/jquery.slug.js') }}"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#md_bundle_cmsbundle_productfamily_name").slug({
+            slug: 'slug', // class of input / span that contains the generated slug 
+            hide: false        // hide the text input, true by default 
+        });
+    });
+</script>
+{% endblock %}

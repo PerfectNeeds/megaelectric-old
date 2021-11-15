@@ -1,0 +1,314 @@
+/*@media only screen and (max-width: 1144px) {
+}*/
+@media only screen and (max-width: 1200px) {
+    .social_media li{
+        width:134px;
+    }
+    .social_media{border-bottom: none;}
+}
+@media only screen and (min-width: 900px) and (max-width: 1000px) {
+    /********** LOGO SECTION *************/
+    .logo_container{
+        width:99%;
+        padding-top:15px;
+    }
+    .logo_bar{
+        width:24%;
+    }
+    .logo{
+        margin-bottom:15px;
+    }
+    /********** NAV SECTION *************/
+    nav{
+        width:76%;
+    }
+    nav ul{
+        width:98%;
+        margin-right:0px;
+        height:39px;
+    }
+    nav ul li{
+        width:24%;
+    }
+    .sub_menu{
+        width:18%;
+    }
+    .sub_menu li{
+        width:100%;
+        height:25px;
+        margin-left:0%;
+    }
+    .sub_menu li a{
+        width:100%;
+    }
+    /********** BANNER SECTION *************/
+    .banner{
+        width:100%;
+        height:400px;
+    }
+    .banner div{
+        width:100%;
+        height:400px;
+    }
+    .banner div img{
+        margin-top:-250px;
+    }
+    .banner div h2{
+        width:40%;
+        font-size:4.5em;
+        margin:25px auto 30px 25%;
+    }
+    .button{
+        margin-top:360px;
+    }
+    /********** SOCIAL MEDIA SECTION *************/
+    .social_media{
+        width:100%;
+        height:75px;
+    }
+    .social_media li{
+        height:75px;
+        width:14%;
+    }
+    .social_media li a{
+        padding-top:15px;
+    }
+    .play_btn{
+        margin:74px 0 0 115px;
+    }
+    /********** BRANDS SECTION *************/
+}
+@media only screen and (min-width: 768px) and (max-width: 899px) {
+    /********** LOGO SECTION *************/
+    .logo_container{
+        width:99%;
+        padding-top:15px;
+    }
+    .logo_bar{
+        width:24%;
+    }
+    .logo{
+        margin-bottom:15px;
+    }
+    /********** NAV SECTION *************/
+    nav{
+        width:69%;
+    }
+    nav ul{
+        width:98%;
+        margin-right:0px;
+        height:39px;
+    }
+    nav ul li{
+        width:24%;
+    }
+    .sub_menu{
+        width:16%;
+        font-size:.75em;
+    }
+    .sub_menu li{
+        width:100%;
+        margin-left:0%;
+    }
+    /********** BANNER SECTION *************/
+    .banner{
+        width:100%;
+        height:311px;
+    }
+    .banner div{
+        width:100%;
+        height:311px;
+    }
+    .banner div img{
+        margin-top:-250px;
+    }
+    .banner div h2{
+        width:265px;
+        font-size:4em;
+        margin:25px auto 30px 25%;
+    }
+    .button{
+        margin-top:270px;
+    }
+    /********** SOCIAL MEDIA SECTION *************/
+    .social_media{
+        width:100%;
+        height:75px;
+    }
+    .social_media ul{
+        width:100%;
+    }
+    .social_media li{
+        height:75px;
+        width:14%;
+    }
+    .social_media li a{
+        padding-top:15px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    /********** LOGO SECTION *************/
+    .logo_container{
+        width:99%;
+        padding-top:15px;
+    }
+    .logo_bar{
+        width:100%;
+    }
+    .logo{
+        margin:15px auto;
+        display: block;
+        float: none;
+    }
+    .highlight, .residential {
+        clear: both;
+        overflow: hidden;
+    }
+    .banner ul li a img{bottom: -45px!important;}
+    /********** NAV SECTION *************/
+    nav{
+        width:100%;
+    }
+    nav ul{
+        width:98%;
+        margin-right:0px;
+        display: none;
+        height: auto;
+        overflow: hidden;
+    }
+    nav ul li{
+        width:100%;
+        display: block;
+        height: auto!important;
+        border-right: none;
+    }
+    .rs-btn{
+        cursor: pointer;
+        position: absolute;
+        right: 15px;
+        top: 35px;
+    }
+    .sub_menu{
+        width:100%;
+        font-size:.75em;
+        position: relative;
+    }
+    .sub_menu li{
+        width:100%;
+        margin-left:0%;
+    }
+    /********** BANNER SECTION *************/
+    .banner{
+        width:100%;
+        height:253px;
+    }
+    .banner div{
+        width:100%;
+        height:253px;
+    }
+    .banner div img{
+        margin-top:-250px;
+    }
+    .banner div h2{
+        width:265px;
+        font-size:3.5em;
+        margin:25px auto 30px 25%;
+    }
+    .button{
+        margin-top:215px;
+    }
+    /********** SOCIAL MEDIA SECTION *************/
+    .social_media{
+        width:100%;
+        height:75px;
+    }
+    .social_media ul{
+        width:100%;
+    }
+    .social_media li{
+        height:75px;
+        width:14%;
+    }
+    .social_media li a{
+        padding-top:15px;
+    }
+}
+
+@media only screen and (max-width: 685px) {
+    /********** BANNER SECTION *************/
+    .banner{
+        width:100%;
+        height:247px;
+    }
+    .banner div{
+        width:100%;
+        height:247px;
+    }
+    .banner div img{
+        margin-top:-115px;
+    }
+    .banner div h2{
+        width:265px;
+        font-size:3.2em;
+        margin:25px auto 30px 25%;
+    }
+    .button{
+        margin-top:200px;
+    }
+    /********** SOCIAL MEDIA SECTION *************/
+    .social_media{
+        width:100%;
+
+    }
+    .social_media ul{
+        width:100%;
+    }
+    .social_media li{
+        height:75px;
+        width:14%;
+    }
+    .social_media li a{
+        padding-top:0px;
+    }
+}
+
+@media only screen and (max-width: 516px) {
+    /********** BANNER SECTION *************/
+    .banner{
+        width:100%;
+        height:165px;
+    }
+    .banner div{
+        width:100%;
+        height:165px;
+    }
+    .banner div img{
+        margin-top:0px;
+    }
+    .banner div h2{
+        width:265px;
+        font-size:2.5em;
+        margin:25px auto 30px 25%;
+    }
+    .button{
+        margin-top:130px;
+    }
+    /********** SOCIAL MEDIA SECTION *************/
+    .social_media{
+        width:100%;
+        height:48px;
+        margin:15px 0;
+    }
+    .social_media ul{
+        width:100%;
+    }
+    .social_media li{
+        height:48px;
+        width:14%;
+        padding:0px;
+    }
+}
+/*@media only screen and (max-width: 480px) {
+    .banner{display: none;}
+}*/

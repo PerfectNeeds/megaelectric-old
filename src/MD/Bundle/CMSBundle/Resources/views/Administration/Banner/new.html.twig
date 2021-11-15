@@ -1,0 +1,49 @@
+{% extends 'AdminTemplateBundle::base.html.twig' %}
+{% block title %}Add New Banner{% endblock %}
+{% block page_title %}Banner creation{% endblock %}
+{% block body -%}
+{{parent()}}
+
+<div class="row">
+    <div class="col-lg-12">
+        <section class="panel">
+            <header class="panel-heading">
+                Banner Creation
+            </header>
+            <div class="panel-body">
+                <form class="form-horizontal tasi-form" action="{{ path('banner_create') }}" method="post"  {{form_enctype(upload_form)}} {{ form_enctype(form) }} >
+                    <div class="form-group">
+  {{ form_label(form.title) }}
+        {{ form_widget(form.title) }}
+                    </div>
+                    <div class="form-group">
+         {{ form_label(form.url) }}
+        {{ form_widget(form.url) }}
+                        <p class="help-block">hint : https://google.com</p>
+                    </div>  
+                 {{ form_rest(form) }}
+                    <div class="form-group">
+                        <div class="col-sm-10">
+                            <label class="col-sm-2 control-label">Target New Tab</label>
+                            <input value="1" class="form-control" type="checkbox" name="open_type">
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                 {{ form_widget(upload_form.file) }}
+                    </div>                        
+                    <div class="form-group">
+                        <div class="col-lg-offset-2 col-lg-10">
+                            <button type="submit" class="btn btn-primary">Save</button>
+                            <button type="button" class="btn btn-default">Cancel</button>
+                        </div>
+                    </div>
+                </form>
+                <div class="panel-body">
+                    <a class="btn btn-round btn-info" href="{{ path('banner') }}"><i class="icon-undo"></i> Back to the list</a>
+                </div>
+        </section>
+    </div>
+</div>
+{% endblock %}

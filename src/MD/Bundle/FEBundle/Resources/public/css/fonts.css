@@ -1,0 +1,84 @@
+@charset "utf-8";
+/* CSS Document */
+@font-face {
+    font-family: 'BTcondBold';
+    src: url('fonts/btcondbold-webfont.eot');
+    src: url('fonts/btcondbold-webfont.eot?#iefix') format('embedded-opentype'),
+        url('fonts/btcondbold-webfont.woff') format('woff'),
+        url('fonts/btcondbold-webfont.ttf') format('truetype'),
+        url('fonts/btcondbold-webfont.svg#BTcondBold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'BTcondMedium';
+    src: url('fonts/btcondmedium-webfont.eot');
+    src: url('fonts/btcondmedium-webfont.eot?#iefix') format('embedded-opentype'),
+        url('fonts/btcondmedium-webfont.woff') format('woff'),
+        url('fonts/btcondmedium-webfont.ttf') format('truetype'),
+        url('fonts/btcondmedium-webfont.svg#BTcondMedium') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'BTcondRegular';
+    src: url('fonts/btcondregular-webfont.eot');
+    src: url('fonts/btcondregular-webfont.eot?#iefix') format('embedded-opentype'),
+        url('fonts/btcondregular-webfont.woff') format('woff'),
+        url('fonts/btcondregular-webfont.ttf') format('truetype'),
+        url('fonts/btcondregular-webfont.svg#BTcondRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family:'Social_icons';
+    src:url("fonts/icomoon.eot");
+    src:url("fonts/icomoon.eot?#iefix") format("embedded-opentype"), 
+        url("fonts/icomoon.woff") format("woff"), 
+        url("fonts/icomoon.ttf") format("truetype"), 
+        url("fonts/icomoon.svg#icomoon") format("svg");
+    font-weight:normal;
+    font-style:normal;
+}
+
+[class^="icon-"], [class*=" icon-"], [class^="ico_"], [class*=" ico_"] {
+    font-family: 'Social_icons';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-google:before, .icn_google:before {
+    content:"\0021"
+}
+.icon-facebook:before, .icn_facebook:before {
+    content:"\0022"
+}
+.icon-twitter:before, .icn_twitter:before {
+    content:"\0023"
+}
+.icon-instagram:before, .icn_instagram:before {
+    content:"\0024"
+}
+.icon-in:before, .icn_in:before {
+    content:"\0025"
+}
+.icon-utube:before, .icn_utube:before {
+    content:"\0026"
+}
+.icon-flikr:before, .icn_flikr:before {
+    content:"\0027"
+}
+.icon-right-arrow:before, .icn-right-arrow:before {
+    content:"\0028"
+}

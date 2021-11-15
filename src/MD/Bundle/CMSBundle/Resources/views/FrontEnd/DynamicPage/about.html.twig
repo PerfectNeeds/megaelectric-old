@@ -1,0 +1,26 @@
+{% extends 'FEBundle::base.html.twig' %}
+{% block title %}{{ page.title }}{% endblock %}
+
+{% block banner %}
+    {{ render(controller('CMSBundle:FrontEnd/Banner:Banner' , {'placment' : 2 })) }}
+{%endblock %}
+
+{% block content %}
+    <div class="dynamic_pages container"> <!-- Start of Dynamic_pages -->
+
+        <div class="col-md-7">
+            <h3> {{ page.title }} </h3>
+            {{ content|raw }}
+        </div>
+        <div class="col-md-5">
+            {% if page.id == 1 %}
+                <h3><a href="{{ path("fe_dynamicpage"  , {   'name': "history"  } ) }}"><i class="icon-right-arrow"></i>History</a></h3>
+            {% elseif page.id == 2 %}
+                <h3><a href="{{ path("fe_dynamicpage"  , {   'name': "about-us"  } ) }}"><i class="icon-right-arrow"></i>About</a></h3>
+            {% endif %}
+            {% for image in images %}
+                <img src="{{ asset("uploads/dynamicpages/" ~ page.id ~ "/"  ~ image.id) }}"  class="img-responsive">
+            {%endfor%}
+        </div>
+    </div> <!-- End Of Dynamic_pages -->
+{% endblock %}

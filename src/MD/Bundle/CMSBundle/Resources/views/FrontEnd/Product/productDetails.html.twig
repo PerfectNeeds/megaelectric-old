@@ -1,0 +1,91 @@
+{% extends 'FEBundle::base.html.twig' %}
+{% block title %}{{ entity.name }}{% endblock %}
+
+{% block stylesheet %}
+    {{ parent() }}
+<link href="{{ asset('bundles/fe/css/jquery.lightbox.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+
+{% block banner %}
+{{ render(controller('CMSBundle:FrontEnd/Banner:Banner' , {'placment' : 3 })) }}
+{%endblock %}
+{% block content %}
+<div class="products_details container"> <!-- Start of Products details -->
+    <h3> {{ entity.category.name }}</h3>
+    <div class="col-md-9 col-sm-8">
+        <div class="products_details_data col-md-12"> <!-- Start of products_details_data -->
+            <h2> {{ entity.name }}  </h2>
+        {% if entity.mainImage %}
+            <img src="{{ asset("uploads/product-family/" ~ entity.id ~ "/"  ~ entity.mainImage.id) }}" class="pro_res">
+        {% else %}
+            <img src="{{ asset('bundles/fe/images/unknown.jpg') }}"/>
+        {% endif %}
+        {{ entity.content.description|raw }}
+        </div> 
+    {% if entity.images|length >0 %}
+        <div class="gallery col-md-12">
+            <p> Multimedia Gallery </p>
+            {% for image in entity.images %}
+            <div class="thumbs">
+                <a href="{{ asset("uploads/product-family/" ~ entity.id ~ "/"  ~ image.id) }}" class="lightbox" rel="group1"><img src="{{ asset("uploads/product-family/" ~ entity.id ~ "/"  ~ image.id) }}" class="thumb"/></a>
+            </div>
+            {% endfor %}
+        </div> <!-- End of products_details_data -->
+    </div>
+
+    <div class="highlight col-md-3 col-sm-4">
+        <h3> PRODUCTS </h3>
+        <ul>
+            {% for productFamilyRand in productFamiliesRand %}
+            <li><a href="{{ path('fe_product_family', {'brand_name':entity.brand.htmlSlug, 'family_name':productFamilyRand.htmlSlug}) }}"> {{ productFamilyRand.name }} </a></li>
+            {% endfor %}
+        </ul>
+
+        {% if entity.youtubeUrl !='' and entity.youtubeUrl !='#' %}
+        <div class="refr_thumbs">
+            <a href="{{entity.youtubeUrl}}" class="youtubeLightbox">
+                <div class="play_btn"></div>
+                <img src="{{ entity.youtuebThumbnail }}" class="refr_thumb"/></a>
+        </div>
+        {% endif %}
+            {% for document in entity.documents %}
+        <div class="solu_pdf">
+            <a target="_blank" href="{{ path('download', {'d': '{"document":'~document.id~',"element":'~entity.id~',"type":12}'}) }}">
+                <img src="{{ asset('bundles/fe/images/pdf.png') }}">
+                <h5> {{ document.name }} </h5>
+            </a>
+        </div>
+            {% endfor %}
+        <div class="apps">
+            <p><strong>{{ entity.content.brief }}</strong></p>
+            {% if entity.iphoneUrl!='' and entity.iphoneUrl!='#' or entity.androidUrl!='' and entity.androidUrl!='#' %}
+            <p> On your smartphone or tablet: </p>
+            {% if entity.androidUrl!='' and entity.androidUrl!='#' %}
+            <a href="{{ entity.iphoneUrl }}"><img src="{{ asset('bundles/fe/images/appstore.png') }}"></a>
+            {% endif %}
+            {% if entity.iphoneUrl!='' and entity.iphoneUrl!='#' %}
+            <a href="{{ entity.androidUrl }}"><img src="{{ asset('bundles/fe/images/google.png') }}"></a>
+            {% endif %}
+            {% endif %}
+            {% if entity.computerAppUrl!='' and entity.computerAppUrl!='#' %}
+            <p> Make your own style: </p>
+            <a href="{{ entity.computerAppUrl }}"><img src="{{ asset('bundles/fe/images/webapplines.png') }}" class="pc_res"></a>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+</div> <!-- End Of Products details -->
+{% endblock %}
+
+
+{% block javascript %}
+{{ parent() }}
+<script src="{{ asset('bundles/fe/js/jquery.lightbox.js') }}" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.lightbox').lightbox({type: 'image'});
+        $('.youtubeLightbox').lightbox();
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends 'AdminTemplateBundle::base.html.twig' %}
+{% block title %}Admin{% endblock %}
+{% block page_title %}Admin Edit{% endblock %}
+{% block body -%}
+<div class="row state-overview">
+    <div class="col-lg-3 col-sm-6">
+        <a href="{{ path('banner') }}">
+            <section class="panel">
+                <div class="symbol terques">
+                    <i class="icon-tags"></i>
+                </div>
+                <div class="value">
+                    <h1>{{ bannerCount }}</h1>
+                    <p>Banner</p>
+                </div>
+            </section>
+        </a>
+    </div>
+    <div class="col-lg-3 col-sm-6">
+        <a href="{{ path('product-brand') }}">
+            <section class="panel">
+                <div class="symbol red">
+                    <i class="icon-star"></i>
+                </div>
+                <div class="value">
+                    <h1>{{ productBrandCount }}</h1>
+                    <p>Product Brand</p>
+                </div>
+            </section>
+        </a>
+    </div>
+    <div class="col-lg-3 col-sm-6">
+        <a href="{{ path('product-family') }}">
+            <section class="panel">
+                <div class="symbol yellow">
+                    <i class="icon-tint"></i>
+                </div>
+                <div class="value">
+                    <h1>{{ productFamilyCount }}</h1>
+                    <p>Product Family</p>
+                </div>
+            </section>
+        </a>
+    </div>
+    <div class="col-lg-3 col-sm-6">
+        <a href="{{ path('dynamicpage') }}">
+            <section class="panel">
+                <div class="symbol blue">
+                    <i class="icon-th-large"></i>
+                </div>
+                <div class="value">
+                    <h1>{{ dynamicPageCount }}</h1>
+                    <p>Dynamic Pages</p>
+                </div>
+            </section>
+        </a>
+    </div>
+</div>
+{% endblock %}

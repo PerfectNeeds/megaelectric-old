@@ -1,0 +1,14 @@
+<li> OUR PARTNERS 
+    <ol class="sub_menu">
+    {% for solution in solutions %}
+        <li><a href="{{ path('fe_our-solution',{'name':solution.htmlSlug}) }}">{{ solution.title }}</a></li>
+    {% endfor %} 
+    </ol>
+</li>
+<li> OUR SOLUTIONS 
+    <ol class="sub_menu">
+    {% for brand in brands %}
+        <li class="border"><a href="{{ path('fe_product_brand', { 'name': brand.htmlSlug }) }}"> {{ brand.name }} </a></li>
+    {% endfor %} 
+    </ol>
+</li>

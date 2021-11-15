@@ -1,0 +1,52 @@
+{% extends 'AdminTemplateBundle::base.html.twig' %}
+{% block title %}Edit {{entity.title}}{% endblock %}
+{% block page_title %}Banner Edit{% endblock %}
+{% block body -%}
+{{parent()}}
+<div class="row">
+    <div class="col-lg-12">
+        <section class="panel">
+            <header class="panel-heading">
+                Banner Edit
+            </header> 
+            <div class="panel-body">
+                <form class="form-horizontal tasi-form" action="{{ path('banner_update', { 'id': entity.id }) }}" method="post" {{form_enctype(upload_form)}} {{ form_enctype(edit_form) }}>
+
+                    <input type="hidden" name="_method" value="PUT" />
+                    <div class="form-group">
+        {{ form_label(edit_form.title) }}
+        {{ form_widget(edit_form.title) }}
+                    </div>
+                    <div class="form-group">
+         {{ form_label(edit_form.url) }}
+        {{ form_widget(edit_form.url) }}
+                        <p class="help-block">Hint : https://google.com</p>
+                    </div> 
+                 {{ form_rest(edit_form) }}
+                    <div class="form-group">
+                        <div class="col-sm-10">
+                            <label class="col-sm-2 control-label">Target New Tab</label>
+                            <input value="1" {%  if entity.openType == 1  %}checked=""{% endif  %} type="checkbox" class="form-control" name="open_type">
+                        </div>
+                    </div>
+
+            {{ form_widget(upload_form.file) }}
+                    <li>
+           {% if image %} <img src="{{ asset("uploads/banners/" ~ entity.id ~ "/"  ~ image.id) }}" width="50" height="60">{% endif %}
+                    </li>
+
+                    <div class="form-group">
+                        <div class="col-lg-offset-2 col-lg-10">
+                            <button class="btn btn-primary" type="submit">Update</button>
+                            <button type="reset" class="btn btn-default">Cancel</button>
+                        </div>
+                    </div>
+                </form>
+                <div class="panel-body">
+                    <a class="btn btn-round btn-info" href="{{ path('banner') }}"><i class="icon-undo"></i> Back to the list</a>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+{% endblock %}

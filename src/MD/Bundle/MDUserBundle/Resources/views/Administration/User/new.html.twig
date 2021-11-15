@@ -1,0 +1,26 @@
+{% extends 'AdminTemplateBundle::base.html.twig' %}
+{% block title %}Users{% endblock %}
+{% block body -%}
+{{ parent() }}
+<div class="row">
+    <div class="col-lg-12">
+        <section class="panel">
+            <header class="panel-heading">
+                User Creation
+            </header>
+            <div class="panel-body">
+                <form class="form-horizontal tasi-form" action="{{ path('user_create') }}" method="post" {{ form_enctype(form) }}>
+        {{ form_widget(form) }}
+                    <div class="form-group">
+                        <div class="col-lg-offset-2 col-lg-10">
+                            <button class="btn btn-danger" type="submit">Create</button>
+                            <button type="reset" class="btn btn-default">Cancel</button>
+                        </div>
+                    </div>
+                </form>
+                <a class="btn btn-round btn-info" href="{{ path('user') }}"><i class="icon-undo"></i> Back to the list</a>
+            </div>
+        </section>
+    </div>
+</div>
+{% endblock %}

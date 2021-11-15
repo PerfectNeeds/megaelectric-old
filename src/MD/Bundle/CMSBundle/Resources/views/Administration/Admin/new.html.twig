@@ -1,0 +1,25 @@
+{% extends 'AdminTemplateBundle::base.html.twig' %}
+{% block title %}Admin{% endblock %}
+{% block page_title %}Admin creation{% endblock %}
+{% block body -%}
+{{parent()}}
+
+<section id="content">
+    <h1>Admin creation</h1>
+
+    <form action="{{ path('admin_create') }}" method="post" {{ form_enctype(form) }}>
+        {{ form_widget(form) }}
+            <p>
+                <button type="submit">Create</button>
+            </p>
+        </form>
+
+        <ul class="record_actions">
+            <li>
+                <a href="{{ path('admin') }}">
+                    Back to the list
+                </a>
+            </li>
+        </ul>
+    </section>
+{% endblock %}

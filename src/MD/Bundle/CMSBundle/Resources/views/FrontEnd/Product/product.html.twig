@@ -1,0 +1,27 @@
+{% extends 'FEBundle::base.html.twig' %}
+
+{% block banner %}
+    {{ render(controller('CMSBundle:FrontEnd/Banner:Banner' , {'placment' : 3 })) }}
+{%endblock %}
+
+{% block title %}{{ entity.name }}{% endblock %}
+{% block content %}
+    <div class="brand container"> <!-- Start of Brand -->
+        <h3> {{ entity.name }} </h3>
+        <div class="category col-md-12"> <!-- Start of Category -->
+            {% for family in entity.families %}
+                {#                <a href="{{ path('fe_product_family', {'brand_name':entity.brand.htmlSlug, 'category_name':entity.htmlSlug, 'family_name':family.htmlSlug}) }}" class="col-md-4 col-sm-6"> <!-- Start of Products -->#}
+                <a href="#" class="col-md-4 col-sm-6"> <!-- Start of Products -->
+                    <div class="products">
+                        <h3> {{ family.name }} </h3>
+                        {% if family.mainImage %}
+                            <img src="{{ asset("uploads/product-family/" ~ family.id ~ "/"  ~ family.mainImage.id) }}">
+                        {% else %}
+                            <img src="{{ asset('bundles/fe/images/unknown.jpg') }}"/>
+                        {% endif %}
+                    </div>
+                </a> <!-- End of Products -->
+            {% endfor %}
+        </div> <!-- End of Category -->
+    </div> <!-- End Of Brand -->
+{% endblock %}

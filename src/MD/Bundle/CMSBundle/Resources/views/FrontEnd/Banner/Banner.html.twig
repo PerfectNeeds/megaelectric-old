@@ -1,0 +1,10 @@
+{% if Banners %}
+
+{% for Banner in Banners %}
+<li>
+    <a {% if Banner.url != '#' and Banner !='' %}href="{{Banner.url}}"{% endif %} {% if Banner.openType== 1 %}target="_blank"{% endif %}><img src="{{ asset('uploads/banners/'~Banner.id~"/"~Banner.image.id) }}"></a>
+    <a {% if Banner.url != '#' and Banner !='' %}href="{{Banner.url}}"{% endif %} {% if Banner.openType== 1 %}target="_blank"{% endif %}><h2> {{Banner.title}}</h2></a>
+    {% if Banner.text %}<p> {{Banner.text}} </p>{% endif %}
+</li>
+                    {% endfor %}
+{% endif %}

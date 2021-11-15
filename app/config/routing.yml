@@ -1,0 +1,28 @@
+user_admin:
+  resource: "@MDUserBundle/Controller/Administration/"
+  type:    annotation
+  prefix: /admin/user
+  
+cms_admin:
+  resource: "@CMSBundle/Controller/Administration/"
+  type:    annotation
+  prefix: /admin/cms
+
+cms:
+  resource: "@CMSBundle/Controller/FrontEnd/"
+  type:    annotation
+  prefix: /
+  
+login:
+    pattern:   /login
+    defaults:  { _controller: MDUserBundle:Administration/User:login }
+    
+download:
+    pattern:   /download
+    defaults:  { _controller: MediaBundle:Download:Download }
+    
+login_check:
+    pattern:   /login_check
+
+logout:
+    pattern: /logout

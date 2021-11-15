@@ -1,0 +1,25 @@
+{% extends 'FEBundle::base.html.twig' %}
+
+{% block title %}Home{% endblock %}
+
+{% block banner %}
+    {{ render(controller('CMSBundle:FrontEnd/Banner:Banner' , {'placment' : 1 })) }}
+{%endblock %}
+{% block content %}
+    {#<div class="wrapper container"> <!-- Start of Wrapper -->
+        {% for productBrand in productBrands %}
+            <section class="wrapper_brand col-md-6 col-sm-6"> <!-- Start of bticino --> 
+                <div class="home-product">
+                    <div class="wrapper-title"> <!-- Start of wrapper title -->
+                        {% if productBrand.logoImage %}<img src="{{ asset("uploads/product-brands/" ~ productBrand.id ~ "/"  ~ productBrand.logoImage.id    ) }}">{% endif %}
+                    </div> <!-- End of wrapper title -->
+                    {% if productBrand.mainImage %}<img src="{{ asset("uploads/product-brands/" ~ productBrand.id ~ "/"  ~ productBrand.mainImage.id) }}" class="res">{% endif %}
+                    <h3> Discover all of {{ productBrand.name }} products </h3>
+                    {{ productBrand.content|raw }} 
+                    <hr/>
+                    <a href="{{ path('fe_product_brand', { 'name': productBrand.htmlSlug }) }}"> CHECK FOR MORE </a>
+                </div>
+            </section> <!-- End of bticino -->
+        {% endfor %}
+    </div> <!-- End Of Wrapper -->#}
+{% endblock %}

@@ -1,0 +1,39 @@
+{% set cr = app.request.attributes.get('_route') %}
+<li {% if ('dashboard' == cr) %}class="active"{% endif %}>
+    <a href="{{ path('dashboard') }}">
+        <i class="icon-dashboard"></i>
+        <span>Dashboard</span>
+    </a>
+</li>
+<li class="sub-menu {% if (
+'dynamicpage'== cr or 'dynamicpage_new'== cr or 'dynamicpage_edit'== cr  
+or 'our-solution' == cr or 'our-solution_new' == cr or 'our-solution_edit' == cr
+or 'banner' == cr or 'banner_new' == cr or 'banner_edit' == cr
+) %}active{% endif %}">
+    <a href="javascript:;" class="">
+        <i class="icon-book"></i>
+        <span>CMS</span>
+        <span class="arrow"></span>
+    </a>
+    <ul class="sub">
+        <li {% if ('dynamicpage'== cr or 'dynamicpage_new'== cr or 'dynamicpage_edit'== cr) %}class="active"{% endif %}><a class="" href="{{ path('dynamicpage') }}">Dynamic Pages</a></li>
+        <li {% if ('our-solution' == cr or 'our-solution_new' == cr or 'our-solution_edit' == cr) %}class="active"{% endif %}><a href="{{ path('our-solution') }}">Our Partners</a></li>
+        <li {% if ('banner' == cr or 'banner_new' == cr or 'banner_edit' == cr) %}class="active"{% endif %}><a href="{{ path('banner') }}">Banners</a></li>
+    </ul>
+</li>
+<li class="sub-menu {% if (
+'product-family' == cr or 'product-family_new' == cr or 'product-family_edit' == cr
+or 'product-category' == cr or 'product-category_new' == cr or 'product-category_edit' == cr
+or 'product-brand' == cr or 'product-brand_new' == cr or 'product-brand_edit' == cr or 'product-family_set_images'==cr or 'product-family_set_documents' == cr 
+) %}active{% endif %}">
+    <a href="javascript:;" class="">
+        <i class="icon-reorder"></i>
+        <span>Product</span>
+        <span class="arrow"></span>
+    </a>
+    <ul class="sub">
+        <li {% if ('product-brand' == cr or 'product-brand_new' == cr or 'product-brand_edit' == cr ) %}class="active"{% endif %}><a href="{{ path('product-brand') }}">Product Brand</a></li>
+        <li {% if ('product-category' == cr or 'product-category_new' == cr or 'product-category_edit' == cr ) %}class="active"{% endif %}><a href="{{ path('product-category') }}">Product Category</a></li>
+        <li {% if ('product-family' == cr or 'product-family_new' == cr or 'product-family_edit' == cr or 'product-family_set_images'==cr or 'product-family_set_documents' == cr ) %}class="active"{% endif %}><a href="{{ path('product-family') }}">Product Family</a></li>
+    </ul>
+</li>

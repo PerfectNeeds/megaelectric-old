@@ -1,0 +1,24 @@
+{% extends 'FEBundle::base.html.twig' %}
+{% block title %}404 Not found error{% endblock %}
+
+{% block banner %}
+{{ render(controller('CMSBundle:FrontEnd/Banner:Banner' , {'placment' : 5 })) }}
+{%endblock %}
+
+{% block content %}
+<div class="cms_header">
+    <div class="center">
+        <h1>Error 404 Not Found</h1>
+    </div>
+</div>
+<div class="page_content">
+    <div class="center">
+        <div class="cms_content">
+            <div class="thank">
+                <h2>The requested page was not found on this server.</h2>
+                <p> <a href="/"> Back to Home </a> </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

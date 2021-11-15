@@ -1,0 +1,96 @@
+{% extends 'AdminTemplateBundle::base.html.twig' %}
+{% block title %}Product Family Gallery{% endblock %}
+{% block page_title %}Product Family documents{% endblock %}
+{% block stylesheets %}
+{{parent()}}
+{% include "FileUploaderBundle::baseCss.html.twig" %}
+{% endblock %}
+{% block body -%}
+<div class="row">
+    <div class="col-lg-12">
+        <section class="panel">
+            <header class="panel-heading">
+                Product Family Documents
+            </header>
+            <div class="panel-body">
+                {% include "FileUploaderBundle::angularjs.html.twig" %}
+
+                <div class="row">
+                    <section class="panel" id="documentRow">
+                  {% for document in documents %}
+                        <div class="col-lg-2 center">
+                            {% if document %} 
+                            <div class="col-lg-9 ">
+                                <a class="task-thumb" target="_blank" href="{{ asset("uploads/product-family/document/" ~ entity.id ~ "/"  ~ document.id) }}">
+                                    <img alt="" src="{{ asset('bundles/admintemplate/img/icon-document.png') }}">
+                                </a>
+                            </div>
+                            <div class="clearfix"></div>
+                                {{document.name}}
+                            <div class="col-lg-10">
+                                <a title="" data-placement="top" data-toggle="tooltip" href="#" onclick="javascript:del('{{document.id}}')" class="btn btn-danger btn-xs btn-block tooltips" data-original-title="Delete">Delete</a>
+                            </div>
+           {% endif %}
+                        </div>
+                  {%endfor%}
+                    </section>
+                </div>
+
+                <div class="panel-body">
+                    <a class="btn btn-round btn-info" href="{{ path('product-family_edit', {'id': entity.id}) }}"><i class="icon-undo"></i> Back to the list</a>
+                </div>
+
+                <form class="form-horizontal tasi-form" hidden name="delete_form" id="delete_form" action="{{ path('product-familydocuments_delete', { 'h_id': id  , 'redirect_id' : 1 }) }}" method="POST"  >
+                    <input type="hidden" name="id" id="documentId" />
+                </form>
+            </div>
+        </section>
+    </div>
+</div>
+{% endblock %}
+          {% block javascripts %}
+                {{  parent() }}
+          {% include "FileUploaderBundle::basejsDocument.html.twig" %}
+<script>
+    $(function() {
+        $('#fileupload').fileupload({
+            dataType: 'json',
+            url: '{{ path('product-family_create_documents' , { 'id': entity.id }) }}',
+            //  maxNumberOfFiles: 3 ,
+            singleFileUploads: true,
+            //  sequentialUploads: true ,
+            done: function(e, data) {
+                $.each(data.result.files, function(index, file) {
+                    // $('<p/>').text(file.name).appendTo(document.body);
+                    //tr.children().closest("tr").hide();
+                    var deleteLink = '<div class="col-lg-10">'
+                            + '<a href="#" onclick="javascript:del(' + file.id + ')" class="btn btn-danger btn-xs btn-block">Delete</a>'
+                            + '</div>';
+                    //  var maindocument = "<input type='radio' name='main' class='set_main'  value='"+file.id+"'>"; 
+                    var documentUrl = '<div class="col-lg-9 ">'
+                            + '<a class = "task-thumb" target = "_blank" href = "' + file.url + '" > '
+                            + '<img src="{{ asset('bundles/admintemplate/img/icon-document.png') }}">'
+                            + '</a>'
+                            + '</div>'
+                            + '<div class="clearfix"></div>';
+                    $("#documentRow").append('<div class="col-lg-2 center">' + documentUrl + deleteLink + "</div>");
+                    $("#roww").find("tr:eq(" + index + ")").remove();
+                    {#$("#roww").find("tr:eq(" + index + ")").fadeOut(0, function() {
+                        alert(index + 'LL');
+                        $(this).remove();
+                    });#}
+                });
+            }
+        });
+    });
+
+
+    function del(id) {
+        if (confirm("Are you sure you want to delete?"))
+        {
+            $('#documentId').val(id);
+            $('#delete_form').submit();
+        }
+    }
+</script>
+       {% endblock %}
